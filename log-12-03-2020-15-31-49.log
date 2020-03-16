@@ -1,0 +1,29 @@
+start: 15:32:07,53 
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robustes Dateikopieren für Windows                              
+-------------------------------------------------------------------------------
+
+  Gestartet: Donnerstag, 12. März 2020 15:32:07
+   Quelle : x:\Backups\Lenovo_Laptop\EigeneBatchScripts\
+     Ziel : c:\Users\wohey\Documents\EigeneBatchScripts\
+
+    Dateien : *.*
+	    
+  Optionen: *.* /TEE /S /E /DCOPY:DA /COPY:DAT /PURGE /MIR /NP /XJD /M /R:3 /W:20 
+
+------------------------------------------------------------------------------
+
+	                  11	x:\Backups\Lenovo_Laptop\EigeneBatchScripts\
+	  *EXTRA Datei		    1287	log-12-03-2020-15-25-59.log
+
+------------------------------------------------------------------------------
+
+           Insgesamt   KopiertÜbersprungenKeine Übereinstimmung    FEHLER    Extras
+Verzeich.:         1         0         1         0         0         0
+  Dateien:        11         0        11         0         0         1
+    Bytes:    27.5 k         0    27.5 k         0         0     1.2 k
+   Zeiten:   0:00:00   0:00:00                       0:00:00   0:00:00
+   Beendet: Donnerstag, 12. März 2020 15:32:07
+
+stop: 15:32:16,89 
