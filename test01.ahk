@@ -16,6 +16,8 @@ Als Auslösetaste ist in allen Fällen die Tab-Taste vorgesehen. Mit
 wird das eingestellt!
 */
 
+Run, %A_WorkingDir%/Hotkey Help.ahk
+
 ;Auto-Refresh
 SetTimer,UPDATEDSCRIPT,1000
 UPDATEDSCRIPT:
@@ -65,32 +67,26 @@ return
 */
 
 #Hotstring EndChars `t   ; reagiert nur auf [Tab] als End Zeichen
-::zB::zum Beispiel
-::bsp::Beispiel
-::mfg::Mit freundlichen Grüßen `nWolfgang Heyden
->+>^r:: ;rechts_Shift-rechts_Ctrl-r
+::zB::zum Beispiel ; <-- TAB is TriggerKey
+::bsp::Beispiel ; <-- TAB is TriggerKey
+::mfg::Mit freundlichen Grüßen `nWolfgang Heyden ; <-- TAB is TriggerKey
+>+>^r:: ; <-- Script Reload mit richtiger CodePage rechts_Shift-rechts_Ctrl-r
 {
   OSD("Script reloaded RCtrl-Rshift-r")
   sleep 3000
 ;  Reload  ; Assign Alt-Shift as a hotkey to restart the script.
   Run, %A_AhkPath% /restart /CP65001 %A_ScriptFullPath% ; Nachbildung von reload wegen Codepage
 }
-::test::test4711x2x3x4
-RAlt & c::
+
+RAlt & c:: ; <-- Insert Copyright Sign
 {
 OSD("© einfügen")
 Send ©
 }
 Return
-::Nest2::
-{
-  OSD("test4711 einfügen")
-  Send test4711abcd
-}
-return
 
 ;!^+d::
-::date::
+::date:: ; <-- Datum und Uhrzeit werden eingefügt
 {
 OSD("Datum und Uhrzeit einfügen")
 FormatTime,Datum,,dd.MM.yy - HH:mm:ss
@@ -98,10 +94,74 @@ Send, %Datum% Uhr
 }
 Return
 
-::onlinehelp::
-RAlt & h::
-RCtrl & h::
+::onlinehelp:: ; <-- Deutsche Online Hilfe <-- TAB is TriggerKey
+RAlt & h:: ; <-- Deutsche Online Hilfe
+RCtrl & h:: ; <-- Deutsche Online Hilfe
 {
   OSD("Online Hilfe")
   run https://ahkde.github.io/docs/AutoHotkey.htm
 }
+Return
+
+#IfWinActive ahk_class MozillaWindowClass
+RShift & 1:: ; <-- (Thunderbird) : Hot Mail Subject "von Wolfgang"
+{
+  OSD("AUFMERKSAME MAIL")
+  send 🔴🔴🔴ᴠᴏɴ Wᴏʟꜰɢᴀɴɢ❎❎❎
+}
+Return
+
+::gw::Gruß Wolfgang ; (Thunderbird) : <-- TAB is TriggerKey
+#IfWinActive
+
+RShift & 2:: ; <-- 3 Little Flowers
+{
+  OSD("Flowers")
+  send 🌺🌻🌼
+}
+Return
+
+RShift & 3:: ; <-- Eyes
+{
+  OSD("eyes")
+  send 👀
+}
+Return
+
+RShift & 5:: ; <-- 5 Stars
+{
+  OSD("Stars")
+  send ⭐⭐⭐⭐⭐
+}
+Return
+
+RShift & 4:: ; <-- Baum Haus Baum aus Consrade
+{
+  OSD("Baum-Haus-Baum aus Consrade")
+  send 🌲🏡🌳ᴀᴜs Cᴏɴsʀᴀᴅᴇ
+}
+Return
+
+RShift & 6:: ; <-- Baum Computer Baum
+{
+  OSD("Baum-Computer-Baum")
+  send 🌲💻🌳
+}
+Return
+
+RShift & 7:: ; <-- Ausrufezeichen Uhr Ausrufezeichen
+{
+  OSD("Ausrufezeichen Uhr Ausrufezeichen")
+  send ❗⏰❗
+}
+Return
+
+>+>^t:: ; <-- TOOGLE Windows Always On Top rechts_Shift-rechts_Ctrl-t
+{
+  OSD("TOOGLE Windows Always On Top")
+  Winset, Alwaysontop, TOGGLE, A
+}
+return
+
+;Beispiel mit ternary Operator
+F7::Run,% (WinExist("ahk_exe Notepad.exe") ? "" : "Notepad.exe") ; <-- Test ternary Operator
