@@ -94,6 +94,26 @@ Send, %Datum% Uhr
 }
 Return
 
+RShift & F11:: ; <-- CTRL drücken
+{
+  OSD("Ctrl-Down")
+  SendInput,{Ctrl down}
+}
+Return
+
+RShift & F12:: ; <-- CTRL loslassen
+{
+  OSD("Ctrl-Up")
+  SendInput,{Ctrl up}
+}
+Return
+
+::snip:: ; <-- (Thunderbird) : snip snap
+{
+  send, ==========snip=========={Enter}{Enter}==========snap=========={Home}{Up}
+}
+Return
+
 ::onlinehelp:: ; <-- Deutsche Online Hilfe <-- TAB is TriggerKey
 RAlt & h:: ; <-- Deutsche Online Hilfe
 RCtrl & h:: ; <-- Deutsche Online Hilfe
@@ -112,6 +132,10 @@ RShift & 1:: ; <-- (Thunderbird) : Hot Mail Subject "von Wolfgang"
 Return
 
 ::gw::Gruß Wolfgang ; (Thunderbird) : <-- TAB is TriggerKey
+#IfWinActive
+
+#IfWinActive Google Notizen - Google Chrome
+::sss::(siehe Screenshot) ; (Chrome - Google Notizen) : <-- TAB is TriggerKey
 #IfWinActive
 
 RShift & 2:: ; <-- 3 Little Flowers
@@ -155,6 +179,8 @@ RShift & 7:: ; <-- Ausrufezeichen Uhr Ausrufezeichen
   send ❗⏰❗
 }
 Return
+
+
 
 >+>^t:: ; <-- TOOGLE Windows Always On Top rechts_Shift-rechts_Ctrl-t
 {
