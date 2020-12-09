@@ -8,12 +8,14 @@ REM ** AUTOR       : Björn Bastian (http://aufschnur.de)
 REM ** VERSION     : 2016-03-03
 REM **
 REM ** HINWEISE    : - Benötigt ROBOCOPY (ab Windows Vista vorinstalliert)
-REM **               - Für Umlaute in ECHO: ä=„ ö=” ü= Ä= Ö=™ Ü=š
-REM ** last edit by wh: 10.03.2020 18:07:15
+REM ** last edit by wh: 09.12.2020 10:58:33
 REM ** Aufruf: foldersync <quelle> <ziel> <ausgewähltes Verzeichnis> von TC aus:foldersync %P %T %N
 REM ****************************************************************************
-
+REM folgende Zeile für Umlaute in ECHO: ä=„ ö=” ü= Ä= Ö=™ Ü=š
 CHCP 1252
+REM folgende Zeile eingefügt, damit %time% richtig angezeigt wird
+SetLocal EnableDelayedExpansion
+
 REM KONFIGURATION ----------------------
 REM Quell- und Zielverzeichnis angeben. WICHTIG:
 REM Verzeichnisse die Leerzeichen enthalten müssen mit Anführungszeichen umschlossen werden
@@ -44,7 +46,7 @@ for %%l in (
 "Im Quellverzeichnis wird bei allen Dateien das Archivbit gelöscht."
 "Damit wird ein inkrementelles Backup möglich."
 ""
-) do echo.%%~l & rem %%~l entfernt die Anführungszeichen    
+) do echo.%%~l & rem %%~l entfernt die Anführungszeichen
 pause
 
 REM Testen ob das verzeichnis existiert
@@ -52,7 +54,7 @@ if exist "%directorybsl%" echo directory existiert & mkdir %ziel%%pfad2%
 if not exist "%directorybsl%" echo ACHTUNG,directory existiert nicht & pause & exit
 pause
 REM echo Soll das Archivbit im Quellverzeicnis gesetzt werden? (j/n):
-set /p input=Soll das Archivbit im Quellverzeicnis gesetzt werden? (j/n):
+set /p input=Soll das Archivbit im Quellverzeicnis gesetzt werden und damit ein FULL-Backup (KEIN inkrementelles) erzeugt werden? (j/n):
     if %input%==j (
     echo %time%
     attrib +a %quelle%%pfad2%\*.* /S /D
