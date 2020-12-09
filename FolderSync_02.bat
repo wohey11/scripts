@@ -22,7 +22,7 @@ REM Verzeichnisse die Leerzeichen enthalten müssen mit Anführungszeichen umschlo
 REM Kein abschließender Backslash \, außer wenn komplettes Laufwerk syncronisiert werden soll
 REM SET quelle=c:\Users\wohey\Documents
 REM SET ziel=z:\Backups\Laptop\Documents
-SET logfile="%userprofile%\AppData\Local\Temp\log-%date:~0,2%-%date:~3,2%-%date:~6,4%-%time:~0,2%-%time:~3,2%-%time:~6,2%.log"
+SET logfile="%userprofile%\AppData\Local\Temp\@FOLDERSYNClog-%date:~0,2%-%date:~3,2%-%date:~6,4%-%time:~0,2%-%time:~3,2%-%time:~6,2%.log"
 SET quelle=%1
 SET ziel=%2
 echo quelle: %quelle%
@@ -140,6 +140,7 @@ ECHO.
 ping -n 10 localhost >nul
 echo stop: %time% >> %logfile%
 xcopy %logfile% %ziel%
+xcopy %logfile% %quelle%
 EXIT
 
 REM HAPPY END
@@ -153,4 +154,5 @@ ECHO.
 ping -n 10 localhost >nul
 echo stop: %time% >> %logfile%
 xcopy %logfile% %ziel%
+xcopy %logfile% %quelle%
 EXIT
