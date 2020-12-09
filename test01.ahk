@@ -189,5 +189,19 @@ Return
 }
 return
 
+>+>^m:: ; <-- Mailadresse wohey@gmx.de
+{
+  OSD("Mailadresse wohey@gmx.de")
+  send wohey@gmx.de
+}
+return
+
+>+>^p:: ; <-- Passw
+{
+  OSD("PW 21@<Wieimmer>@12")
+  send 21@Kirchris@12
+}
+return
+
 ;Beispiel mit ternary Operator
 F7::Run,% (WinExist("ahk_exe Notepad.exe") ? "" : "Notepad.exe") ; <-- Test ternary Operator
